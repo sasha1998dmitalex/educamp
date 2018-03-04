@@ -11,6 +11,9 @@
 |
 */
 
+use App\Equestions;
+use App\User;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -18,3 +21,53 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('/english/allQuestions', 'EnglishQuestionsController@index');
+
+Route::get('/english/isCompleted','EnglishQuestionsController@isCompleted');
+
+Route::get('english/single/{id}', [
+
+    'uses' => 'EnglishQuestionsController@single',
+
+    'as' => 'english.question'
+
+]);
+
+Route::post('english/single/check/{id}', [
+
+    'uses' => 'EnglishQuestionsController@check',
+
+    'as'=> 'question.check'
+
+]);
+
+
+
+
+//   $question =  Equestions::find(2);
+//   $users = User::find(1);
+
+//   $question->users()->attach(1);
+
+//    foreach ($users->equestions as $equestion) {
+//
+//        echo $equestion->id;
+//
+//    }
+
+
+//    foreach ($question->users as $user) {
+//
+//       echo $user->id;
+//
+//    }
+
+
+
+
+
+
+
+//Route::get('/english/test', )
